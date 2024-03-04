@@ -16,6 +16,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "images.unsplash.com",
       },
+      {
+        protocol: "https",
+        hostname: "thoughtful-chickens-9661b5da26.strapiapp.com",
+      }
     ],
   },
 };
