@@ -18,8 +18,8 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "thoughtful-chickens-9661b5da26.strapiapp.com",
-      }
+        hostname: "thoughtful-chickens-9661b5da26.media.strapiapp.com",
+      },
     ],
   },
 };

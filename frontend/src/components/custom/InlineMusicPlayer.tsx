@@ -1,6 +1,7 @@
 "use client";
 
 import type { StrapiAudioData } from "@/lib/types";
+import { getStrapiMedia } from "@/lib/utils";
 
 import { useMemo, useCallback, useRef } from "react";
 import { PlayCircle, StopCircle } from "lucide-react";
@@ -18,8 +19,8 @@ const formatTime = (seconds: number) =>
 
 export function InlineMusicPlayer({ audio }: { readonly audio: StrapiAudioData }) {
   const containerRef = useRef(null);
-
-
+  const strapiUrl = getStrapiMedia(audio.audio.url);
+  
   const { wavesurfer, isPlaying, currentTime } = useWavesurfer({
     container: containerRef,
     height: 50,
@@ -31,7 +32,7 @@ export function InlineMusicPlayer({ audio }: { readonly audio: StrapiAudioData }
     barRadius: 3,
     dragToSeek: true,
     barAlign: "bottom",
-    url: "http://localhost:1337" + audio.audio.url,
+    url: strapiUrl as string,
     plugins: useMemo(() => [Timeline.create()], []),
   });
 

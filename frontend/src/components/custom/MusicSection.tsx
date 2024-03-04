@@ -4,9 +4,11 @@ import { PaginationComponent } from "@/components/custom/Pagination";
 
 import { getAllMusicData } from "@/data/loader";
 import React from "react";
+import { getStrapiURL } from "@/lib/utils";
 
 export default async function MusicSection() {
   const data = await getAllMusicData();
+  const baseUrl = getStrapiURL();
 
   const audioFiles = data.data;
   if (!audioFiles) return <p>No items found.</p>;

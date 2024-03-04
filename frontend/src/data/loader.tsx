@@ -1,10 +1,11 @@
 import qs from "qs";
 import { unstable_noStore as noStore } from "next/cache";
-const baseUrl = process.env.STRAPI_URL ?? "http://localhost:1337";
+import { flattenAttributes, getStrapiURL } from "@/lib/utils";
+
 
 //NOTES: https://developer.mozilla.org/en-US/docs/Web/API/URL/URL
 
-import { flattenAttributes } from "@/lib/utils";
+const baseUrl = getStrapiURL();
 
 function getAuthToken() {
   return null;
