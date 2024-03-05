@@ -2,8 +2,8 @@
 
 import { getStrapiMedia, cn } from "@/lib/utils";
 
-import { useMemo, useCallback, useRef } from "react";
-import { PlayCircle, StopCircle } from "lucide-react";
+import { useMemo, useCallback, useRef, useEffect, useState } from "react";
+import { PlayCircle, StopCircle, Loader2 } from "lucide-react";
 
 import { useWavesurfer } from "@wavesurfer/react";
 import Timeline from "wavesurfer.js/dist/plugins/timeline.esm.js";
@@ -27,6 +27,16 @@ export interface AudioPlayerProps {
   };
 }
 
+
+function Loader({ text }: { readonly text: string }) {
+  return (
+    <div className="flex items-center space-x-2">
+      <Loader2 className="mr-2 h-8 w-8 animate-spin text-pink-500" />
+      <p>{text}</p>
+    </div>
+  );
+}
+
 const formatTime = (seconds: number) =>
   [seconds / 60, seconds % 60]
     .map((v) => `0${Math.floor(v)}`.slice(-2))
@@ -39,6 +49,9 @@ export function InlineMusicPlayer({
 }) {
   const containerRef = useRef(null);
   const strapiUrl = getStrapiMedia(audio.audio.url);
+
+  const [loading, setLoading] = useState(false);
+  const [progress, setProgress] = useState(0);
 
   const { wavesurfer, isPlaying, currentTime } = useWavesurfer({
     container: containerRef,
@@ -60,15 +73,39 @@ export function InlineMusicPlayer({
     [wavesurfer]
   );
 
-  const imageStyles = "w-full md:h-36 md:w-36 rounded-lg object-cover"
+  const onLoading = useCallback(
+    () =>
+      wavesurfer
+        ? wavesurfer.on("loading", (number) => {
+            if (number !== 100) {
+              setLoading(true);
+              setProgress(number);
+            } else setLoading(false);
+          })
+        : null,
+    [wavesurfer]
+  );
+
+  useEffect(() => {
+    onLoading();
+  }, [wavesurfer]);
+
+  const imageStyles = "w-full md:h-36 md:w-36 rounded-lg object-cover";
 
   return (
     <div className="block md:flex md:items-center gap-4 p-4">
       <div className="relative">
         <div className="absolute inset-0 w-full h-full lg:hidden">
-          <button onClick={onPlayPause} className="h-full w-full flex items-center justify-center">
+          <button
+            onClick={onPlayPause}
+            className="h-full w-full flex items-center justify-center"
+            disabled={loading}
+          >
             {isPlaying ? (
-              <StopCircle size={96} className="text-white opacity-90 animate-pulse" />
+              <StopCircle
+                size={96}
+                className="text-white opacity-90 animate-pulse"
+              />
             ) : (
               <PlayCircle size={96} className="text-white opacity-20" />
             )}
@@ -83,11 +120,17 @@ export function InlineMusicPlayer({
           className={isPlaying ? cn(imageStyles, "opacity-100") : imageStyles}
         />
       </div>
-      <div className="flex-1 flex flex-col-reverse p-4">
-        <div ref={containerRef} className="flex-1" />
+      <div className="relative flex-1 flex flex-col-reverse p-4">
+        <div ref={containerRef} className="flex-1 relative">
+          {loading && (
+            <div className="absolute inset-0  animate-pulse flex items-center justify-center">
+              <Loader text={`Loading ${progress}%`} />
+            </div>
+          )}
+        </div>
         <div className="flex items-center gap-2">
           <div className="hidden lg:block">
-            <button onClick={onPlayPause}>
+            <button onClick={onPlayPause} disabled={loading}>
               {isPlaying ? (
                 <StopCircle size={48} className="text-pink-500 animate-pulse" />
               ) : (
