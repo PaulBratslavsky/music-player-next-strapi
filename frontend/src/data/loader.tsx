@@ -1,5 +1,5 @@
 import qs from "qs";
-import { unstable_noStore as noStore } from "next/cache";
+// import { unstable_noStore as noStore } from "next/cache";
 import { flattenAttributes, getStrapiURL } from "@/lib/utils";
 
 //NOTES: https://developer.mozilla.org/en-US/docs/Web/API/URL/URL
@@ -54,7 +54,7 @@ export async function getAllMusicData(
   currentPage: number,
   queryString: string
 ) {
-  noStore();
+  // noStore();
   const url = new URL("/api/songs", baseUrl);
   url.search = qs.stringify({
     sort: ["createdAt:desc"],
