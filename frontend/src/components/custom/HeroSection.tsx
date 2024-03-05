@@ -33,7 +33,7 @@ export default async function HeroSection() {
         <p className="mt-4 text-lg md:text-xl lg:text-2xl mb-4">
           {hero.text}
         </p>
-        <div className="w-[475px] text-pink-600 font-semibold">
+        <div className="container sm:w-full  md:w-[575px] text-pink-600 font-semibold">
           <Search />
         </div>
       </div>
