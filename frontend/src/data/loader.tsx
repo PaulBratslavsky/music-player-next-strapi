@@ -2,10 +2,10 @@ import qs from "qs";
 import { unstable_noStore as noStore } from "next/cache";
 import { flattenAttributes, getStrapiURL } from "@/lib/utils";
 
-
 //NOTES: https://developer.mozilla.org/en-US/docs/Web/API/URL/URL
 
 const baseUrl = getStrapiURL();
+const PAGE_SIZE = 4;
 
 function getAuthToken() {
   return null;
@@ -43,17 +43,21 @@ export async function getHomePageData() {
           imageBackground: {
             fields: ["url", "alternativeText"],
           },
-        }
+        },
       },
     },
   });
   return fetchData(url.href);
 }
 
-export async function getAllMusicData() {
+export async function getAllMusicData(
+  currentPage: number,
+  queryString: string
+) {
   noStore();
   const url = new URL("/api/songs", baseUrl);
   url.search = qs.stringify({
+    sort: ["createdAt:desc"],
     populate: {
       artist: {
         fields: ["name"],
@@ -64,6 +68,22 @@ export async function getAllMusicData() {
       audio: {
         fields: ["url", "alternativeText"],
       },
+    },
+    filters: {
+      $or: [
+        { title: { $containsi: queryString } },
+        {
+          artist: {
+            name: {
+              $containsi: queryString,
+            },
+          },
+        },
+      ],
+    },
+    pagination: {
+      pageSize: PAGE_SIZE,
+      page: currentPage,
     },
   });
   return fetchData(url.href);

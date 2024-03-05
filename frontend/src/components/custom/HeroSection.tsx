@@ -3,9 +3,9 @@ import { Search } from "./Search";
 import { getHomePageData } from "@/data/loader";
 import { StrapiImage } from "./StrapiImage";
 
+
 export default async function HeroSection() {
   const data = await getHomePageData();
-
   const hero = data.hero;
   const avatarImage = hero.imageAvatar.url;
   const backgroundImage = hero.imageBackground.url;
