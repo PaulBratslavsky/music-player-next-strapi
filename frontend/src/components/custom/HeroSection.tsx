@@ -19,7 +19,7 @@ export default async function HeroSection() {
         width={1920}
         src={backgroundImage}
       />
-      <div className="relative z-10  h-full flex flex-col items-center justify-center text-center text-white bg-black bg-opacity-30">
+      <div className="relative z-10  h-full flex flex-col items-center justify-center text-center text-white bg-black bg-opacity-60">
         <StrapiImage
           alt="Avatar of the author"
           className="h-48 w-48 rounded-full object-cover mb-6"

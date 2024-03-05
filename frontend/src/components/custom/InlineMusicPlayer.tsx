@@ -89,7 +89,7 @@ export function InlineMusicPlayer({
           <div className="hidden lg:block">
             <button onClick={onPlayPause}>
               {isPlaying ? (
-                <StopCircle size={48} className="text-pink-500" />
+                <StopCircle size={48} className="text-pink-500 animate-pulse" />
               ) : (
                 <PlayCircle size={48} className="text-pink-500" />
               )}
