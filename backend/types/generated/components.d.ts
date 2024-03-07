@@ -4,9 +4,9 @@ export interface LayoutHero extends Schema.Component {
   collectionName: 'components_layout_heroes';
   info: {
     displayName: 'Hero';
+    description: '';
   };
   attributes: {
-    imageAvatar: Attribute.Media;
     imageBackground: Attribute.Media;
     heading: Attribute.String;
     text: Attribute.String;

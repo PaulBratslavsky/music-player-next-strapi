@@ -5,7 +5,7 @@ import { PaginationComponent } from "@/components/custom/Pagination";
 import { getAllMusicData } from "@/data/loader";
 import React from "react";
 
-export default async function MusicSection({ page, query } : { readonly page: number, readonly query: string}) {
+export async function MusicSection({ page, query } : { readonly page: number, readonly query: string}) {
   
   const data = await getAllMusicData(page, query);
   const totalPages = data.meta.pagination.pageCount;

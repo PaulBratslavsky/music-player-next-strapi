@@ -1,6 +1,6 @@
 import React from "react";
-import HeroSection from "@/components/custom/HeroSection";
-import MusicSection from "@/components/custom/MusicSection";
+import { HeroSection } from "@/components/custom/HeroSection";
+import { MusicSection } from "@/components/custom/MusicSection";
 
 interface SearchParamsProps {
   searchParams?: {
@@ -9,12 +9,14 @@ interface SearchParamsProps {
   };
 }
 
-export default async function Home({ searchParams }: Readonly<SearchParamsProps>) {
+export default async function Home({
+  searchParams,
+}: Readonly<SearchParamsProps>) {
   const currentPage = Number(searchParams?.page) || 1;
-  const query = searchParams?.query ?? "";  
+  const query = searchParams?.query ?? "";
   return (
     <React.Fragment>
-      <HeroSection /> 
+      <HeroSection />
       <MusicSection page={currentPage} query={query} />
     </React.Fragment>
   );
