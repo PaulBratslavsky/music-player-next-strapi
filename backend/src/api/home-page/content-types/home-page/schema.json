@@ -17,6 +17,12 @@
       "type": "component",
       "repeatable": false,
       "component": "layout.hero"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
     }
   }
 }

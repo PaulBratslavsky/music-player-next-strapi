@@ -833,6 +833,8 @@ export interface ApiHomePageHomePage extends Schema.SingleType {
   };
   attributes: {
     hero: Attribute.Component<'layout.hero'>;
+    title: Attribute.String;
+    description: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
