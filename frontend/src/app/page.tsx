@@ -15,8 +15,6 @@ interface SearchParamsProps {
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getHomeMetadata();
-
-  console.log("page", page);
   
   return {
       title: page?.title ?? "Music App",

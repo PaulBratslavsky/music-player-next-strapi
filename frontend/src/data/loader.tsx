@@ -29,7 +29,7 @@ async function fetchData(url: string) {
   }
 }
 
-export async function getHomePageData() {  
+export async function getHomePageData() {
   noStore();
   const url = new URL("/api/home-page", baseUrl);
   url.search = qs.stringify({
@@ -46,13 +46,14 @@ export async function getHomePageData() {
       },
     },
   });
-  return fetchData(url.href);
+
+  return await fetchData(url.href);
 }
 
-export async function getHomeMetadata() {  
+export async function getHomeMetadata() {
   noStore();
   const url = new URL("/api/home-page", baseUrl);
-  return fetchData(url.href);
+  return await fetchData(url.href);
 }
 
 export async function getAllMusicData(
@@ -91,5 +92,5 @@ export async function getAllMusicData(
       page: currentPage,
     },
   });
-  return fetchData(url.href);
+  return await fetchData(url.href);
 }
