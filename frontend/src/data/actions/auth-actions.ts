@@ -125,6 +125,8 @@ export async function loginUserAction(prevState: any, formData: FormData) {
 }
 
 export async function logoutAction() {
+  const cookie = cookies().get("jwt");
+  console.log(cookie);
   cookies().delete("jwt");
   redirect("/");
   return { ok: true };
