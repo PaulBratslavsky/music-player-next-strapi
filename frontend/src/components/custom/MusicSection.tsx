@@ -13,6 +13,8 @@ export async function MusicSection({ page, query } : { readonly page: number, re
   const audioFiles = data.data;
   if (!audioFiles) return <p>No items found.</p>;
 
+  console.log("audioFiles", audioFiles);
+
   return (
     <React.Fragment>
       <div className="container mx-auto grid my-2 sm:grid-cols-1 md:grid-cols-2 gap-4">

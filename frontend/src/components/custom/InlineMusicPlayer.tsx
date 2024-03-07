@@ -2,11 +2,10 @@
 
 import { getStrapiMedia, cn } from "@/lib/utils";
 
-import { useMemo, useCallback, useRef, useEffect, useState } from "react";
+import { useCallback, useRef, useEffect, useState } from "react";
 import { PlayCircle, StopCircle, Loader2 } from "lucide-react";
 
 import { useWavesurfer } from "@wavesurfer/react";
-import Timeline from "wavesurfer.js/dist/plugins/timeline.esm.js";
 import { StrapiImage } from "./StrapiImage";
 
 export interface AudioPlayerProps {
@@ -26,7 +25,6 @@ export interface AudioPlayerProps {
     url: string;
   };
 }
-
 
 function Loader({ text }: { readonly text: string }) {
   return (
@@ -65,7 +63,6 @@ export function InlineMusicPlayer({
     dragToSeek: true,
     barAlign: "bottom",
     url: strapiUrl as string,
-    plugins: useMemo(() => [Timeline.create()], []),
   });
 
   const onPlayPause = useCallback(

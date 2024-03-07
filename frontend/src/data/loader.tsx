@@ -49,6 +49,12 @@ export async function getHomePageData() {
   return fetchData(url.href);
 }
 
+export async function getHomeMetadata() {  
+  noStore();
+  const url = new URL("/api/home-page", baseUrl);
+  return fetchData(url.href);
+}
+
 export async function getAllMusicData(
   currentPage: number,
   queryString: string
