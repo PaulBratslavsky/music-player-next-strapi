@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { getHomeMetadata } from "@/data/loader";
 import { HeroSection } from "@/components/custom/HeroSection";
 import { MusicSection } from "@/components/custom/MusicSection";
+import { cookies } from "next/headers";
 
 interface SearchParamsProps {
   searchParams?: {
@@ -14,6 +15,8 @@ interface SearchParamsProps {
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getHomeMetadata();
+
+  console.log("page", page);
   
   return {
       title: page?.title ?? "Music App",
