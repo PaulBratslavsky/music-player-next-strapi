@@ -74,7 +74,7 @@ export function SignupForm() {
         </CardFooter>
         <div className="mb-4 text-center text-sm">
           Have an account?
-          <Link className="underline ml-2" href="login">
+          <Link className="underline ml-2" href="signin">
             Log In
           </Link>
         </div>
