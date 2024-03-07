@@ -63,7 +63,7 @@ export async function registerUserAction(prevState: any, formData: FormData) {
     };
   }
 
-  cookies().set("jwt", responseData.jwt);
+  cookies().set("jwt", responseData.jwt, config);
   redirect("/dashboard");
 }
 
@@ -120,7 +120,7 @@ export async function loginUserAction(prevState: any, formData: FormData) {
     };
   }
 
-  cookies().set("jwt", responseData.jwt);
+  cookies().set("jwt", responseData.jwt, config);
   redirect("/dashboard");
 }
 

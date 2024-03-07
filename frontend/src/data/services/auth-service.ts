@@ -1,3 +1,5 @@
+import { getStrapiURL } from "@/lib/utils";
+
 interface RegisterUserProps {
   username: string;
   password: string;
@@ -11,7 +13,7 @@ interface LoginUserProps {
 
 
 export async function registerUserService(userData: RegisterUserProps) {
-  const baseUrl = process.env.STRAPI_URL ?? "http://localhost:1337";
+const baseUrl = getStrapiURL();
   const url = new URL("/api/auth/local/register", baseUrl);
 
   try {
@@ -32,7 +34,7 @@ export async function registerUserService(userData: RegisterUserProps) {
 }
 
 export async function loginUserService(userData: LoginUserProps) {
-  const baseUrl = process.env.STRAPI_URL ?? "http://localhost:1337";
+const baseUrl = getStrapiURL();
   const url = new URL("/api/auth/local", baseUrl);
 
   try {
