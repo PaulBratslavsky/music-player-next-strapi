@@ -1,0 +1,32 @@
+{
+  "kind": "singleType",
+  "collectionName": "coffee_home_pages",
+  "info": {
+    "singularName": "coffee-home-page",
+    "pluralName": "coffee-home-pages",
+    "displayName": "Coffee Home Page",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "hero": {
+      "type": "component",
+      "repeatable": false,
+      "component": "layout.hero"
+    },
+    "features": {
+      "type": "component",
+      "repeatable": false,
+      "component": "layout.features-list"
+    }
+  }
+}

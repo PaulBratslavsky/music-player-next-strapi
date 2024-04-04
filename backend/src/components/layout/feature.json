@@ -1,12 +1,15 @@
 {
-  "collectionName": "components_layout_heroes",
+  "collectionName": "components_layout_features",
   "info": {
-    "displayName": "Hero",
+    "displayName": "Feature",
     "description": ""
   },
   "options": {},
   "attributes": {
-    "imageBackground": {
+    "text": {
+      "type": "string"
+    },
+    "image": {
       "type": "media",
       "multiple": false,
       "required": false,
@@ -17,16 +20,11 @@
         "audios"
       ]
     },
-    "heading": {
+    "linkText": {
       "type": "string"
     },
-    "text": {
+    "href": {
       "type": "string"
-    },
-    "link": {
-      "type": "component",
-      "repeatable": false,
-      "component": "layout.link"
     }
   }
 }

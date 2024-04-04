@@ -820,6 +820,40 @@ export interface ApiArtistArtist extends Schema.CollectionType {
   };
 }
 
+export interface ApiCoffeeHomePageCoffeeHomePage extends Schema.SingleType {
+  collectionName: 'coffee_home_pages';
+  info: {
+    singularName: 'coffee-home-page';
+    pluralName: 'coffee-home-pages';
+    displayName: 'Coffee Home Page';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    description: Attribute.Text;
+    hero: Attribute.Component<'layout.hero'>;
+    features: Attribute.Component<'layout.features-list'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::coffee-home-page.coffee-home-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::coffee-home-page.coffee-home-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiHomePageHomePage extends Schema.SingleType {
   collectionName: 'home_pages';
   info: {
@@ -902,6 +936,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
       'api::artist.artist': ApiArtistArtist;
+      'api::coffee-home-page.coffee-home-page': ApiCoffeeHomePageCoffeeHomePage;
       'api::home-page.home-page': ApiHomePageHomePage;
       'api::song.song': ApiSongSong;
     }
