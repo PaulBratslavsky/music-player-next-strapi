@@ -18,7 +18,7 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "determined-canvas-4ac12967af.strapiapp.com",
+        hostname: "determined-canvas-4ac12967af.media.strapiapp.com",
       },
     ],
   },
