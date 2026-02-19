@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx next build:*)",
+      "Bash(ls:*)",
+      "WebFetch(domain:strapi.io)",
+      "WebSearch",
+      "WebFetch(domain:docs.strapi.io)",
+      "mcp__ide__getDiagnostics",
+      "Bash(where:*)",
+      "WebFetch(domain:www.npmjs.com)",
+      "Bash(npm install:*)",
+      "Bash(node debug-peaks.mjs:*)",
+      "Bash(curl:*)"
+    ]
+  }
+}

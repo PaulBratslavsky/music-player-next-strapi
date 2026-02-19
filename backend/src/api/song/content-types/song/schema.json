@@ -38,6 +38,9 @@
       ],
       "type": "media",
       "multiple": false
+    },
+    "peaks": {
+      "type": "json"
     }
   }
 }
